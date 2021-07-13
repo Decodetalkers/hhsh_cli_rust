@@ -1,4 +1,4 @@
-use cli_table::{Cell, Color, Style, Table, print_stdout};
+use cli_table::{format::Justify,Cell, Color, Style, Table, print_stdout};
 use futures::executor::block_on;
 use regex::Regex;
 use serde_json::{json, Value};
@@ -58,7 +58,7 @@ fn main() {
         while hhsh[index]["trans"][inindex] != Value::Null {
             output.push(vec![
                 hhsh[index]["name"].to_string().cell(),
-                hhsh[index]["trans"][inindex].to_string().cell(),
+                hhsh[index]["trans"][inindex].to_string().cell().justify(Justify::Right),
             ]);
             inindex += 1;
         }
@@ -66,7 +66,7 @@ fn main() {
     }
     let table = output
         .table()
-        .title(vec!["Fucking Words".cell().foreground_color(Option::Some(Color::Green)), "HHSH".cell().foreground_color(Option::Some(Color::Green))])
+        .title(vec!["Fucking Words".cell().foreground_color(Option::Some(Color::Green)), "HHSH".cell().justify(Justify::Right).foreground_color(Option::Some(Color::Green))])
         .bold(true);
     assert!(print_stdout(table).is_ok());
 }
