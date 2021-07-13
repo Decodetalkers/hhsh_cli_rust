@@ -3,6 +3,9 @@ use futures::executor::block_on;
 use regex::Regex;
 use serde_json::{json, Value};
 use std::{env,io::{self,BufRead}};
+///
+///This is for String to the hhsh 
+///
 fn get_hhsh_str(hhsh: String) -> String {
     let re = Regex::new(r"([a-zA-z0-9]{2,})+").unwrap();
     let mut output = String::new();
