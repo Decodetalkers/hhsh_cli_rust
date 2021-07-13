@@ -1775,7 +1775,7 @@ get	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_json-1.0.64/
 get	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/surf-2.2.0/src/client.rs	/^    pub fn get(&self, uri: impl AsRef<str>) -> RequestBuilder {$/;"	P	implementation:Client
 get	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/surf-2.2.0/src/one_off.rs	/^pub fn get(uri: impl AsRef<str>) -> RequestBuilder {$/;"	f
 get_extended_float	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_json-1.0.64/src/lexical/cached.rs	/^    pub fn get_extended_float(&self, index: usize) -> ExtendedFloat {$/;"	P	implementation:ExtendedFloatArray
-get_hhsh_str	/home/cht/Rust/spidder/src/main.rs	/^fn get_hhsh_str(hhsh:String) -> String{$/;"	f
+get_hhsh_str	/home/cht/Rust/spidder/src/main.rs	/^fn get_hhsh_str(hhsh: String) -> String {$/;"	f
 get_large	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_json-1.0.64/src/lexical/cached.rs	/^    pub fn get_large(&self, index: usize) -> ExtendedFloat {$/;"	P	implementation:ModeratePathPowers
 get_mut	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_json-1.0.64/src/map.rs	/^    pub fn get_mut(&mut self) -> &mut Value {$/;"	P	implementation:OccupiedEntry
 get_mut	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/serde_json-1.0.64/src/map.rs	/^    pub fn get_mut<Q>(&mut self, key: &Q) -> Option<&mut Value>$/;"	P	implementation:Map
@@ -3001,7 +3001,7 @@ take_body	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/surf-2.2.0/s
 take_middleware	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/surf-2.2.0/src/request.rs	/^    pub(crate) fn take_middleware(&mut self) -> Option<Vec<Arc<dyn Middleware>>> {$/;"	P	implementation:Request
 test	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/regex-1.5.4/src/exec.rs	/^mod test {$/;"	n
 test	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/regex-1.5.4/src/prog.rs	/^mod test {$/;"	n
-test	/home/cht/Rust/spidder/src/main.rs	/^async fn test(input:String) -> surf::Result<Value> {$/;"	f
+test	/home/cht/Rust/spidder/src/main.rs	/^async fn test(input: String) -> surf::Result<Value> {$/;"	f
 test_into_cell	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/cli-table-0.4.6/src/cell.rs	/^    fn test_into_cell() {$/;"	f	module:tests
 test_into_row	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/cli-table-0.4.6/src/row.rs	/^    fn test_into_row() {$/;"	f	module:tests
 test_into_row_with_style	/home/cht/.cargo/registry/src/github.com-1ecc6299db9ec823/cli-table-0.4.6/src/row.rs	/^    fn test_into_row_with_style() {$/;"	f	module:tests

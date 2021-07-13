@@ -1,8 +1,8 @@
-use cli_table::{print_stdout, Cell, Style, Table};
+use cli_table::{Cell, Color, Style, Table, print_stdout};
 use futures::executor::block_on;
 use regex::Regex;
 use serde_json::{json, Value};
-use std::env;
+use std::{env,io::{self,BufRead}};
 fn get_hhsh_str(hhsh: String) -> String {
     let re = Regex::new(r"([a-zA-z0-9]{2,})+").unwrap();
     let mut output = String::new();
@@ -26,7 +26,21 @@ async fn test(input: String) -> surf::Result<Value> {
 }
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let query: String = (&args[1]).to_string();
+    let mut query:String = String::new();
+    if args.len() >=2 {
+        query= (&args[1]).to_string();
+    }else {
+    let stdin = io::stdin();
+        for line in stdin.lock().lines() {
+            let line = line.expect("Could not read line from standard in");
+            query=line.to_string();
+            break;
+        }
+    }
+    if query == "--help".to_string(){
+        println!("Input the txt");
+        return;
+    }
     let input = get_hhsh_str(query);
     let hhsh: Value;
     match block_on(test(input)) {
@@ -52,7 +66,7 @@ fn main() {
     }
     let table = output
         .table()
-        .title(vec!["Fucking Words".cell(), "HHSH".cell()])
+        .title(vec!["Fucking Words".cell().foreground_color(Option::Some(Color::Green)), "HHSH".cell().foreground_color(Option::Some(Color::Green))])
         .bold(true);
     assert!(print_stdout(table).is_ok());
 }
