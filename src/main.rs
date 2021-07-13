@@ -1,10 +1,13 @@
-use cli_table::{format::Justify,Cell, Color, Style, Table, print_stdout};
+use cli_table::{format::Justify, print_stdout, Cell, Color, Style, Table};
 use futures::executor::block_on;
 use regex::Regex;
 use serde_json::{json, Value};
-use std::{env,io::{self,BufRead}};
+use std::{
+    env,
+    io::{self, BufRead},
+};
 ///
-///This is for String to the hhsh 
+///This is for String to the hhsh
 ///
 fn get_hhsh_str(hhsh: String) -> String {
     let re = Regex::new(r"([a-zA-z0-9]{2,})+").unwrap();
@@ -29,18 +32,18 @@ async fn test(input: String) -> surf::Result<Value> {
 }
 fn main() {
     let args: Vec<String> = env::args().collect();
-    let mut query:String = String::new();
-    if args.len() >=2 {
-        query= (&args[1]).to_string();
-    }else {
-    let stdin = io::stdin();
+    let mut query: String = String::new();
+    if args.len() >= 2 {
+        query = (&args[1]).to_string();
+    } else {
+        let stdin = io::stdin();
         for line in stdin.lock().lines() {
             let line = line.expect("Could not read line from standard in");
-            query=line.to_string();
+            query = line.to_string();
             break;
         }
     }
-    if query == "--help".to_string(){
+    if query == "--help".to_string() {
         println!("Input the txt");
         return;
     }
@@ -61,7 +64,10 @@ fn main() {
         while hhsh[index]["trans"][inindex] != Value::Null {
             output.push(vec![
                 hhsh[index]["name"].to_string().cell(),
-                hhsh[index]["trans"][inindex].to_string().cell().justify(Justify::Right),
+                hhsh[index]["trans"][inindex]
+                    .to_string()
+                    .cell()
+                    .justify(Justify::Right),
             ]);
             inindex += 1;
         }
@@ -69,7 +75,15 @@ fn main() {
     }
     let table = output
         .table()
-        .title(vec!["Fucking Words".cell().foreground_color(Option::Some(Color::Green)), "HHSH".cell().justify(Justify::Right).foreground_color(Option::Some(Color::Green))])
+        .title(vec![
+            "Fucking Words"
+                .cell()
+                .foreground_color(Option::Some(Color::Green)),
+            "HHSH"
+                .cell()
+                .justify(Justify::Right)
+                .foreground_color(Option::Some(Color::Green)),
+        ])
         .bold(true);
     assert!(print_stdout(table).is_ok());
 }
